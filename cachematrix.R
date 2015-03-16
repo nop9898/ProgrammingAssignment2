@@ -4,7 +4,7 @@
 ###########################################################
 
 
-## mateCacheMatrix(data_matrix)
+## makeCacheMatrix(data_matrix)
 ##
 ## Creates a 'matrix' object that can cache the inverse matrix of data_matrix.
 ##
@@ -34,6 +34,7 @@ makeCacheMatrix <- function(data_matrix = matrix()) {
         return(stored_inverse)
     }
     
+    # define the set- and get- functions
     list (
         set = iset, 
         get = iget,  
