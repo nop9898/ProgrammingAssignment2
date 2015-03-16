@@ -1,6 +1,9 @@
 ## Programming Assignment 2 - R Programming Coursera
 ## nop98@hotmail.com // nop9898@github
+
 ## mateCacheMatrix(data_matrix)
+## Creates a 'matrix' object that can cache the inverse matrix of data_matrix.
+## Input: data_matrix : an invertable square matrix
 makeCacheMatrix <- function(data_matrix = matrix()) {
 
     stored_inverse <- NULL
@@ -18,7 +21,7 @@ makeCacheMatrix <- function(data_matrix = matrix()) {
     
     # function 'isetinverse' - caches the inverse matrix
     isetinverse <- function(inverse_matrix) {
-        stored_inverse <- inverse_matrix
+        stored_inverse <<- inverse_matrix
     }
 
     # function 'igetinverse' - returns the cached inverse matrix
@@ -35,9 +38,11 @@ makeCacheMatrix <- function(data_matrix = matrix()) {
 }
 
 ## cacheSolve(matrix_vector)
-## Return the inverse matrix of matrix_vector$get(), 
+## Return the inverse matrix of matrix_vector$get().
 ## > if a previously cached version exists for this matrix, it will return the cached value
 ## > if not, this function will calculate the inverse, cache it, and return it
+##
+## Input: a 'CacheMatrix' vector as produced by the makeCacheMatrix function
 cacheSolve <- function(matrix_vector, ...) {
     
     # Attempt to get the cached inverse matrix
