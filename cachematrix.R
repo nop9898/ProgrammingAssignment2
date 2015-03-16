@@ -1,9 +1,8 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+## Programming Assignment 2 - R Programming Coursera
+## nop98@hotmail.com // nop9898@github
 
 makeCacheMatrix <- function(x = matrix()) {
+    ## Adding comment here. 
 
 }
 
