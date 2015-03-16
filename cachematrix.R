@@ -1,8 +1,13 @@
-## Programming Assignment 2 - R Programming Coursera
-## nop98@hotmail.com // nop9898@github
+###########################################################
+## Programming Assignment 2 - R Programming (Coursera)   ##
+## nop9898@github                                        ##
+###########################################################
+
 
 ## mateCacheMatrix(data_matrix)
+##
 ## Creates a 'matrix' object that can cache the inverse matrix of data_matrix.
+##
 ## Input: data_matrix : an invertable square matrix
 makeCacheMatrix <- function(data_matrix = matrix()) {
 
@@ -15,7 +20,7 @@ makeCacheMatrix <- function(data_matrix = matrix()) {
     }
     
     # function 'iget' - returns the input matrix
-    iget <- function() {
+    iget <- function() { 
         return(data_matrix)
     }
     
@@ -38,8 +43,9 @@ makeCacheMatrix <- function(data_matrix = matrix()) {
 }
 
 ## cacheSolve(matrix_vector)
-## Return the inverse matrix of matrix_vector$get().
-## > if a previously cached version exists for this matrix, it will return the cached value
+##
+## Returns the inverse matrix of matrix_vector$get().
+## > if a previously cached version exists for this matrix, it will return the cached inverse
 ## > if not, this function will calculate the inverse, cache it, and return it
 ##
 ## Input: a 'CacheMatrix' vector as produced by the makeCacheMatrix function
@@ -50,7 +56,6 @@ cacheSolve <- function(matrix_vector, ...) {
     
     if (!is.null(cached_inverse)) {
         # If the cached inverse matrix exists, return it.     
-        message("getting cached inverse")
         return(cached_inverse)
     }
     else {
