@@ -1,14 +1,60 @@
 ## Programming Assignment 2 - R Programming Coursera
 ## nop98@hotmail.com // nop9898@github
+## mateCacheMatrix(data_matrix)
+makeCacheMatrix <- function(data_matrix = matrix()) {
 
-makeCacheMatrix <- function(x = matrix()) {
-    ## Adding comment here. 
+    stored_inverse <- NULL
+    
+    # function 'iset' - caches the input matrix (and clears the cached inverse matrix)
+    iset <- function(y) {
+        data_matrix <<- y
+        stored_inverse <- NULL
+    }
+    
+    # function 'iget' - returns the input matrix
+    iget <- function() {
+        return(data_matrix)
+    }
+    
+    # function 'isetinverse' - caches the inverse matrix
+    isetinverse <- function(inverse_matrix) {
+        stored_inverse <- inverse_matrix
+    }
 
+    # function 'igetinverse' - returns the cached inverse matrix
+    igetinverse <- function() {
+        return(stored_inverse)
+    }
+    
+    list (
+        set = iset, 
+        get = iget,  
+        getinverse = igetinverse,
+        setinverse = isetinverse
+    )
 }
 
-
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+## cacheSolve(matrix_vector)
+## Return the inverse matrix of matrix_vector$get(), 
+## > if a previously cached version exists for this matrix, it will return the cached value
+## > if not, this function will calculate the inverse, cache it, and return it
+cacheSolve <- function(matrix_vector, ...) {
+    
+    # Attempt to get the cached inverse matrix
+    cached_inverse <- matrix_vector$getinverse()
+    
+    if (!is.null(cached_inverse)) {
+        # If the cached inverse matrix exists, return it.     
+        message("getting cached inverse")
+        return(cached_inverse)
+    }
+    else {
+        # If the cached inverse matrix does not exist, calculate it.
+        this_matrix = matrix_vector$get()
+        this_inverse = solve(this_matrix, ...)
+        
+        # Cache the result and return it
+        matrix_vector$setinverse(this_inverse)
+        return(this_inverse)
+    }    
 }
